@@ -7,6 +7,4 @@ public class PostNotFoundException extends RuntimeException{
 		super();
 	}
 	
-	
-	
 }

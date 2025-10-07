@@ -1,6 +1,7 @@
 package com.app.post.controller;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,30 +13,19 @@ import com.app.dao.PostDAO;
 import com.app.exception.PostNotFoundException;
 import com.app.vo.PostVO;
 
-public class PostUpdateController implements Action {
-
+public class PostUpdateController implements Action{
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		
 		Result result = new Result();
 		PostDAO postDAO = new PostDAO();
+		Optional<PostVO> post = null;
+		Long id = null;
+		id = Long.parseLong(req.getParameter("id"));
 		
+			post = postDAO.select(id);
 		
-		Long id = Long.parseLong(req.getParameter("id"));
-		
-		// postDAO.select(id) : 타입 VO
-		// postDAO.select(id).orElseThrow();
-		
-		try {
-			PostVO foundPost =  postDAO.select(id).orElseThrow(PostNotFoundException::new);
-			req.setAttribute("post", foundPost);
-		} catch (PostNotFoundException e) {
-			result.setPath("/error.jsp");
-			req.setAttribute("message", "에러");
-		}
-		// .post로 작성시 무한로딩 걸림!
+		req.setAttribute("post", post);
 		result.setPath("/update.jsp");
 		return result;
 	}
-
 }

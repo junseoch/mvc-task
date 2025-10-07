@@ -4,13 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>작성페이지</title>
+<title>에러</title>
 </head>
 <body>
-
-<form>
-	<input>
-</form>
-
+	<h2>에러 발생!</h2>
+	<a href="list.post">게시글 목록</a>
 </body>
 </html>

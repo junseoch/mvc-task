@@ -14,16 +14,15 @@ public class PostDeleteOkController implements Action {
 
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		
 		Result result = new Result();
 		PostDAO postDAO = new PostDAO();
-		
-		Long id = Long.parseLong(req.getParameter("id"));
-		
+		Long id = null;
+		id = Long.parseLong(req.getParameter("id"));
 		postDAO.delete(id);
-		result.setRedirect(true);
-		result.setPath("list.post");
 		
+		result.setPath("/mvc_task/list.post");
+		result.setRedirect(true);
 		return result;
 	}
+
 }

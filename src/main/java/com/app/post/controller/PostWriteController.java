@@ -13,11 +13,10 @@ public class PostWriteController implements Action {
 
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		
+	
 		Result result = new Result();
 		
-		result.setPath("write.jsp");
-		
+		result.setPath("/write.post");
 		
 		return result;
 	}

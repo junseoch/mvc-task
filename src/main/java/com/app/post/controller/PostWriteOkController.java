@@ -11,22 +11,26 @@ import com.app.Result;
 import com.app.dao.PostDAO;
 import com.app.vo.PostVO;
 
-public class PostWriteOkController implements Action{
+public class PostWriteOkController implements Action {
 
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		Result result = new Result();
-		
-		PostVO postVO = new PostVO();
-		PostDAO postDAO = new PostDAO();
-		
-		postVO.setPostTitle(req.getParameter("postTitle"));
-		postVO.setPostContent(req.getParameter("postContent"));
-		postDAO.insert(postVO);
 
-		result.setPath("list.post");
+		
+		PostDAO postDAO = new PostDAO();
+		PostVO postVO = new PostVO();
+		
+		postVO.setPostContent(req.getParameter("id")); 
+		postVO.setPostTitle(req.getParameter("postTitle"));
+		postVO.setPostTitle(req.getParameter("postTitle"));
+		
+		postDAO.insert(postVO);
+		
+		result.setPath("/mvc_task/read.jsp");
 		result.setRedirect(true);
 		return result;
 	}
 	
+
 }

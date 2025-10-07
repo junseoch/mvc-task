@@ -11,18 +11,13 @@ import com.app.Result;
 import com.app.dao.PostDAO;
 
 public class PostListController implements Action {
-
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		
 		Result result = new Result();
 		PostDAO postDAO = new PostDAO();
-		
 		req.setAttribute("posts", postDAO.selectAll());
-		result.setPath("/list.jsp");
-		result.setRedirect(false);
 		
+		result.setPath("/list.jsp");
 		return result;
 	}
-
 }

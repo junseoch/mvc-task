@@ -8,20 +8,19 @@
 <title>게시물 수정</title>
 </head>
 <body>
-
-	<%
-		PostVO post = (PostVO)request.getAttribute("post");	
-	%>
-
-	<form action="/mvc_task/update-ok.post" method="get">
-		<input name='id' type='hidden' value="<%=post.getId() %>" />
+	<form action="/mvc_task/update-ok.post" method="post">
 		<div>
-			<p>게시글 제목<input name="postTitle" value="<%=post.getPostTitle()%>"/></p>
+			<input name="id" type="hidden" value="${post.id}" />
 		</div>
 		<div>
-			<p>게시글 내용<input name="postContent" value="<%=post.getPostContent()%>" /></p>
+			<span>게시글 제목</span>
+			<input name="postTitle"  value="${post.postTitle}"/>
 		</div>
-		<button>수정완료</button>
+		<div>
+			<span>게시글 내용</span>
+			<input name="postContent" value="${post.postContent}"/>
+		</div>
+		<button type="button">작성 완료</button>
 	</form>
 </body>
 </html>
